@@ -30,6 +30,9 @@ export default createGlobalStyle`
     padding: 8px;
     border: none;
 
+    background: #ff6f00;
+    color: #fff;
+
     cursor: pointer;
   }
 }

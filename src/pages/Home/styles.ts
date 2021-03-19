@@ -16,9 +16,4 @@ export const Container = styled.div`
       font-size: 2rem;
     }
   }
-
-  button {
-    background: #ff6f00;
-    color: #fff;
-  }
 `
