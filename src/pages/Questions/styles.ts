@@ -1,28 +1,26 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  height: 100vh;
+
   display: grid;
   grid-template-rows: 100px 1fr;
-
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
   main {
     padding: 16px;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     span {
+      font-size: 2rem;
       text-align: center;
     }
 
     .box__options {
-      margin-top: 16px;
+      margin-top: 32px;
       max-width: 300px;
       width: 100%;
 

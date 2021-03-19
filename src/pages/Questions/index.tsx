@@ -2,12 +2,12 @@ import React from 'react'
 
 import { Container } from './styles'
 
+import Header from 'components/Header'
+
 export default function Questions(): JSX.Element {
   return (
     <Container>
-      <header>
-        <h1>General Knowledge</h1>
-      </header>
+      <Header title="General Knowledge" />
 
       <main>
         <span>

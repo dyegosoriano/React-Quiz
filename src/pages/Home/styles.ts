@@ -17,19 +17,8 @@ export const Container = styled.div`
     }
   }
 
-  header,
-  footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    button {
-      background: #ff6f00;
-      color: #fff;
-
-      padding: 8px;
-      border: none;
-      border-radius: 4px;
-    }
+  button {
+    background: #ff6f00;
+    color: #fff;
   }
 `
