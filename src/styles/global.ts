@@ -26,6 +26,10 @@ export default createGlobalStyle`
   }
 
   button {
+    border-radius: 4px;
+    padding: 8px;
+    border: none;
+
     cursor: pointer;
   }
 }
