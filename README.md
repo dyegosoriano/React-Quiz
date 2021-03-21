@@ -2,6 +2,59 @@
 
 # QUIZ - Desafio de código
 
+## Inicializando
+
+Acessar a raiz do diretório do projeto e executar o comando:
+
+```
+yarn
+```
+
+## Estrutura das pastas
+
+```
+my-app
+├── src/
+│   ├── compoments/
+│   │   ├── Footer/
+│   │   │   └── index.tsx
+│   │   │   └── styles.ts
+│   │   └── Header/
+│   │       └── index.tsx
+│   │       └── styles.ts
+│   ├── context/
+│   │   └── QuestionsContext.tsx
+│   ├── pages/
+│   │   ├── Home/
+│   │   │   └── index.tsx
+│   │   │   └── styles.ts
+│   │   ├── PAge404/
+│   │   │   └── index.tsx
+│   │   │   └── styles.ts
+│   │   ├── Questions/
+│   │   │   └── index.tsx
+│   │   │   └── styles.ts
+│   │   ├── Score/
+│   │   │   └── index.tsx
+│   │   │   └── styles.ts
+│   │   └── index.tsx
+│   ├── routes/
+│   │   └── index.tsx
+│   ├── services/
+│   │   └── api.ts
+│   ├── styles/
+│   │   └── global.ts
+│   ├── App.tsx
+│   └── index.tsx
+├── .editorconfig
+├── .editorignore
+├── .eslintrc.json
+├── .gitignore
+├── prettier.config.js
+├── README.md
+└── tsconfig.json
+```
+
 ## Resumo
 
 Seu desafio é criar um QUIZ de 10 questões, resposta possíveis Verdadeiro ou Falso, utilizando React. **Você não deve implementar apenas a solução mais básica. Essa é uma chance para mostrar suas habilidades e impressionar.**
