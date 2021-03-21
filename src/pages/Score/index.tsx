@@ -9,28 +9,24 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 
 export default function Score(): JSX.Element {
-  const { score } = useContext(QuestionsContext)
+  const { score, answered } = useContext(QuestionsContext)
   const history = useHistory()
 
   return (
     <Container>
-      <Header title={`You score: ${score}`} />
+      <Header title={`You score: ${score}%`} />
 
       <ul>
-        <li>
-          <MdDone size={24} color="#1b5e20" />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus facilis
-          ea velit adipisci quidem, eius similique debitis modi perferendis,
-          harum deleniti consectetur vel officia dolor ullam aliquam. Nostrum,
-          libero veniam?
-        </li>
-        <li>
-          <MdClear size={24} color="#d50000" />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus facilis
-          ea velit adipisci quidem, eius similique debitis modi perferendis,
-          harum deleniti consectetur vel officia dolor ullam aliquam. Nostrum,
-          libero veniam?
-        </li>
+        {answered.map(question => (
+          <li key={question.question}>
+            {question.isRight ? (
+              <MdDone size={24} color="#1b5e20" />
+            ) : (
+              <MdClear size={24} color="#d50000" />
+            )}
+            {question.question}
+          </li>
+        ))}
       </ul>
 
       <Footer>
