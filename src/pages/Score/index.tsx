@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdDone, MdClear } from 'react-icons/md'
 import { useHistory } from 'react-router'
 
 import { Container } from './styles'
 
+import { QuestionsContext } from 'context/QuestionsContext'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 
 export default function Score(): JSX.Element {
+  const { score } = useContext(QuestionsContext)
   const history = useHistory()
 
   return (
     <Container>
-      <Header title="You score: 30%" />
+      <Header title={`You score: ${score}`} />
 
       <ul>
         <li>

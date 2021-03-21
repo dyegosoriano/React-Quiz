@@ -3,13 +3,19 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import GlobalStyle from './styles/global'
 
+import { QuestionsProvider } from 'context/QuestionsContext'
 import Routes from './routes'
 
 const App = (): JSX.Element => (
-  <Router>
+  <>
+    <QuestionsProvider>
+      <Router>
+        <Routes />
+      </Router>
+    </QuestionsProvider>
+
     <GlobalStyle />
-    <Routes />
-  </Router>
+  </>
 )
 
 export default App
