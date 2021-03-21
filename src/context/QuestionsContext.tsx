@@ -2,14 +2,14 @@ import React, { createContext, useEffect, useState } from 'react'
 
 import api from 'services/api'
 
-interface contextInterface {
+interface ContextInterface {
   handleResolvedQuestions: (indexQuestion: number, isRight: boolean) => void
-  questions: questionsInterface[]
+  questions: QuestionsInterface[]
   answered: AnsweredInterface[]
   score: number
 }
 
-interface questionsInterface {
+interface QuestionsInterface {
   correct_answer: string
   difficulty: string
   question: string
@@ -21,12 +21,12 @@ interface AnsweredInterface {
   isRight: boolean
 }
 
-export const QuestionsContext = createContext<contextInterface>(
-  {} as contextInterface
+export const QuestionsContext = createContext<ContextInterface>(
+  {} as ContextInterface
 )
 
 export const QuestionsProvider: React.FC = ({ children }) => {
-  const [questions, setQuestions] = useState<questionsInterface[]>([])
+  const [questions, setQuestions] = useState<QuestionsInterface[]>([])
   const [answered, setAnswered] = useState<AnsweredInterface[]>([])
   const [score, setScore] = useState(0)
 
