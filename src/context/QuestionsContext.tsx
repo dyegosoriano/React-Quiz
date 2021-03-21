@@ -4,9 +4,9 @@ import api from 'services/api'
 
 interface ContextInterface {
   handleResolvedQuestions: (indexQuestion: number, isRight: boolean) => void
+  resetQuestions: () => void
   questions: QuestionsInterface[]
   answered: AnsweredInterface[]
-  score: number
 }
 
 interface QuestionsInterface {
@@ -28,7 +28,6 @@ export const QuestionsContext = createContext<ContextInterface>(
 export const QuestionsProvider: React.FC = ({ children }) => {
   const [questions, setQuestions] = useState<QuestionsInterface[]>([])
   const [answered, setAnswered] = useState<AnsweredInterface[]>([])
-  const [score, setScore] = useState(0)
 
   async function getQuestions(): Promise<void> {
     try {
@@ -57,18 +56,22 @@ export const QuestionsProvider: React.FC = ({ children }) => {
     setAnswered([...answered, newAnswered])
   }
 
+  function resetQuestions(): void {
+    setAnswered([])
+    getQuestions()
+  }
+
   useEffect(() => {
     getQuestions()
-    setScore(17)
   }, [])
 
   return (
     <QuestionsContext.Provider
       value={{
         handleResolvedQuestions,
+        resetQuestions,
         questions,
-        answered,
-        score
+        answered
       }}
     >
       {children}
