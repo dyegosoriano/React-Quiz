@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { MdDone, MdClear } from 'react-icons/md'
 import { useHistory } from 'react-router'
 
@@ -9,12 +9,28 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 
 export default function Score(): JSX.Element {
-  const { score, answered } = useContext(QuestionsContext)
+  const { answered, resetQuestions } = useContext(QuestionsContext)
   const history = useHistory()
+
+  const [questionsRight, setQuestionsRight] = useState(0)
+
+  function handleClick(): void {
+    resetQuestions()
+    history.push('/')
+  }
+
+  useEffect(() => {
+    const hits = answered.filter(item => item.isRight).length
+    const totalQuestions = answered.length
+
+    const percentageHits = Math.floor((hits * 100) / totalQuestions)
+
+    setQuestionsRight(percentageHits)
+  }, [answered])
 
   return (
     <Container>
-      <Header title={`You score: ${score}%`} />
+      <Header title={`You score: ${questionsRight}%`} />
 
       <ul>
         {answered.map(question => (
@@ -30,7 +46,7 @@ export default function Score(): JSX.Element {
       </ul>
 
       <Footer>
-        <button onClick={() => history.push('/')}>!START AGAIN!</button>
+        <button onClick={handleClick}>!START AGAIN!</button>
       </Footer>
     </Container>
   )
