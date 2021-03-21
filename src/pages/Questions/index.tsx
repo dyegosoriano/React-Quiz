@@ -7,13 +7,14 @@ import { QuestionsContext } from 'context/QuestionsContext'
 import Header from 'components/Header'
 
 export default function Questions(): JSX.Element {
-  const { questions } = useContext(QuestionsContext)
+  const { questions, handleResolvedQuestions } = useContext(QuestionsContext)
   const history = useHistory()
 
   const [counter, setCounter] = useState(0)
 
-  function handleNextQuestion(): void {
+  function handleNextQuestion(isRight: boolean): void {
     if (counter < questions.length - 1) {
+      handleResolvedQuestions(counter, isRight)
       setCounter(counter + 1)
     } else {
       history.push('/score')
@@ -28,8 +29,8 @@ export default function Questions(): JSX.Element {
         <span>{questions[counter].question}</span>
 
         <div className="box__options">
-          <button onClick={handleNextQuestion}>TRUE</button>
-          <button onClick={handleNextQuestion}>FALSE</button>
+          <button onClick={() => handleNextQuestion(true)}>TRUE</button>
+          <button onClick={() => handleNextQuestion(false)}>FALSE</button>
         </div>
       </main>
     </Container>

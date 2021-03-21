@@ -15,8 +15,12 @@ export const Container = styled.div`
     align-items: center;
 
     span {
-      font-size: 2rem;
+      max-width: 720px;
+      width: 100%;
+
       text-align: center;
+      font-weight: 300;
+      font-size: 2rem;
     }
 
     .box__options {
