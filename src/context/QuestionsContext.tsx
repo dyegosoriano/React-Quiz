@@ -1,8 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react'
+
 import api from 'services/api'
 
 interface contextInterface {
+  handleResolvedQuestions: (indexQuestion: number, isRight: boolean) => void
   questions: questionsInterface[]
+  answered: AnsweredInterface[]
   score: number
 }
 
@@ -13,13 +16,19 @@ interface questionsInterface {
   category: string
 }
 
+interface AnsweredInterface {
+  question: string
+  isRight: boolean
+}
+
 export const QuestionsContext = createContext<contextInterface>(
   {} as contextInterface
 )
 
 export const QuestionsProvider: React.FC = ({ children }) => {
   const [questions, setQuestions] = useState<questionsInterface[]>([])
-  const [score, setScore] = useState<number>(0)
+  const [answered, setAnswered] = useState<AnsweredInterface[]>([])
+  const [score, setScore] = useState(0)
 
   async function getQuestions(): Promise<void> {
     try {
@@ -34,13 +43,34 @@ export const QuestionsProvider: React.FC = ({ children }) => {
     }
   }
 
+  function handleResolvedQuestions(
+    indexQuestion: number,
+    isRight: boolean
+  ): void {
+    const currentQuestion = questions[indexQuestion]
+
+    const newAnswered = {
+      isRight: (currentQuestion.correct_answer === 'True') === isRight,
+      question: currentQuestion.question
+    }
+
+    setAnswered([...answered, newAnswered])
+  }
+
   useEffect(() => {
     getQuestions()
     setScore(17)
   }, [])
 
   return (
-    <QuestionsContext.Provider value={{ questions, score }}>
+    <QuestionsContext.Provider
+      value={{
+        handleResolvedQuestions,
+        questions,
+        answered,
+        score
+      }}
+    >
       {children}
     </QuestionsContext.Provider>
   )
