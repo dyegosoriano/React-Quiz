@@ -12,9 +12,10 @@ export default function Questions(): JSX.Element {
 
   const [counter, setCounter] = useState(0)
 
-  function handleNextQuestion(isRight: boolean): void {
+  function handleNextQuestion(isRight = false): void {
+    handleResolvedQuestions(counter, isRight)
+
     if (counter < questions.length - 1) {
-      handleResolvedQuestions(counter, isRight)
       setCounter(counter + 1)
     } else {
       history.push('/score')
@@ -23,16 +24,16 @@ export default function Questions(): JSX.Element {
 
   return (
     <Container>
-      <Header title="General Knowledge" />
+      <Header title={questions[counter].category} />
 
       <main>
-        <span>{questions[counter].question}</span>
-
-        <div className="box__options">
-          <button onClick={() => handleNextQuestion(true)}>TRUE</button>
-          <button onClick={() => handleNextQuestion(false)}>FALSE</button>
-        </div>
+        <p>{questions[counter].question}</p>
       </main>
+
+      <footer>
+        <button onClick={async () => handleNextQuestion(true)}>TRUE</button>
+        <button onClick={async () => handleNextQuestion()}>FALSE</button>
+      </footer>
     </Container>
   )
 }

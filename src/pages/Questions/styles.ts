@@ -4,17 +4,16 @@ export const Container = styled.div`
   height: 100vh;
 
   display: grid;
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: 100px 1fr 100px;
 
   main {
     padding: 16px;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    span {
+    p {
       max-width: 720px;
       width: 100%;
 
@@ -22,22 +21,23 @@ export const Container = styled.div`
       font-weight: 300;
       font-size: 2rem;
     }
+  }
 
-    .box__options {
-      margin-top: 32px;
-      max-width: 300px;
-      width: 100%;
+  footer {
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
 
-      display: flex;
-      justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
-      button {
-        background: #455a64;
-        color: #fff;
+    button {
+      background: #455a64;
+      color: #fff;
 
-        :hover {
-          background: #37474f;
-        }
+      :hover {
+        background: #37474f;
       }
     }
   }
